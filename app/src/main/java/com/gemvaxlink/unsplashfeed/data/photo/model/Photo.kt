@@ -5,8 +5,10 @@ import com.gemvaxlink.unsplashfeed.data.collection.model.Collection
 import com.gemvaxlink.unsplashfeed.data.common.model.PhotoStatistics
 import com.gemvaxlink.unsplashfeed.data.user.model.User
 import kotlinx.parcelize.Parcelize
+import kotlinx.serialization.Serializable
 
 @Parcelize
+@Serializable
 data class Photo(
     val id: String,
     val created_at: String?,
@@ -15,24 +17,16 @@ data class Photo(
     val height: Int?,
     val color: String? = "#E0E0E0",
     val blur_hash: String?,
-    val views: Int?,
-    val downloads: Int?,
     val likes: Int?,
     var liked_by_user: Boolean?,
     val description: String?,
-    val alt_description: String?,
-    val exif: Exif?,
-    val location: Location?,
-    val tags: List<Tag>?,
-    val current_user_collections: List<Collection>?,
-    val sponsorship: Sponsorship?,
     val urls: Urls,
     val links: Links?,
     val user: User?,
-    val statistics: PhotoStatistics?
 ) : Parcelable
 
 @Parcelize
+@Serializable
 data class Exif(
     val make: String?,
     val model: String?,
@@ -43,6 +37,7 @@ data class Exif(
 ) : Parcelable
 
 @Parcelize
+@Serializable
 data class Location(
     val city: String?,
     val country: String?,
@@ -50,18 +45,21 @@ data class Location(
 ) : Parcelable
 
 @Parcelize
+@Serializable
 data class Position(
     val latitude: Double?,
     val longitude: Double?
 ) : Parcelable
 
 @Parcelize
+@Serializable
 data class Tag(
     val type: String?,
     val title: String?
 ) : Parcelable
 
 @Parcelize
+@Serializable
 data class Urls(
     val raw: String,
     val full: String,
@@ -71,6 +69,7 @@ data class Urls(
 ) : Parcelable
 
 @Parcelize
+@Serializable
 data class Links(
     val self: String,
     val html: String,
@@ -79,6 +78,7 @@ data class Links(
 ) : Parcelable
 
 @Parcelize
+@Serializable
 data class Sponsorship(
     val sponsor: User?
 ) : Parcelable

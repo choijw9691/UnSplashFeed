@@ -1,5 +1,6 @@
 package com.gemvaxlink.unsplashfeed.repository
 
+import android.util.Log
 import androidx.annotation.StringRes
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
@@ -13,16 +14,19 @@ class PhotoDataSource (
     override suspend fun load(params: LoadParams<Int>): LoadResult<Int, Photo> {
 
         try {
+
             val currentPage = params.key ?: 1
             val response = photoService.getPhotos(page = currentPage, per_page = 20,order_by = Order.LATEST.value)
-            val nextPage = if (response.isEmpty()) null else currentPage + 1
+            Log.d("JIWOUNG","enfwklwemS: "+response[0].toString())
 
+            val nextPage = if (response.isEmpty()) null else currentPage + 1
             return LoadResult.Page(
                 data = response,
                 prevKey = if (currentPage == 1) null else currentPage - 1,
                 nextKey = nextPage
             )
         } catch (e: Exception) {
+            Log.d("JIWOUNG","enfwklwemS: "+e.message)
             return LoadResult.Error(e)
         }
 
@@ -33,7 +37,6 @@ class PhotoDataSource (
         return state.anchorPosition
     }
     companion object {
-
         enum class Order(@StringRes val titleRes: Int, val value: String) {
             LATEST(R.string.order_latest, "latest"),
             OLDEST(R.string.order_oldest,"oldest"),

@@ -23,7 +23,4 @@ class MainViewModel @Inject constructor(
 
      val mainPhotoList: Flow<PagingData<Photo>> = photoRepository.getPhotos().cachedIn(viewModelScope)
 
-/*    private val _mainPhotoList = MutableStateFlow<List<Photo>>(listOf())
-    val mainPhotoList: StateFlow<List<Photo>> = _mainPhotoList*/
-
 }

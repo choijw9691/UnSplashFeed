@@ -5,8 +5,10 @@ import com.gemvaxlink.unsplashfeed.data.photo.model.Photo
 import com.gemvaxlink.unsplashfeed.data.photo.model.Tag
 import com.gemvaxlink.unsplashfeed.data.user.model.User
 import kotlinx.parcelize.Parcelize
+import kotlinx.serialization.Serializable
 
 @Parcelize
+@Serializable
 data class Collection(
     val id: String,
     val title: String,
@@ -26,6 +28,7 @@ data class Collection(
 ) : Parcelable
 
 @Parcelize
+@Serializable
 data class Links(
     val self: String,
     val html: String,

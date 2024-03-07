@@ -3,8 +3,10 @@ package com.gemvaxlink.unsplashfeed.data.user.model
 import android.os.Parcelable
 import com.gemvaxlink.unsplashfeed.data.photo.model.Photo
 import kotlinx.parcelize.Parcelize
+import kotlinx.serialization.Serializable
 
 @Parcelize
+@Serializable
 data class User(
     val id: String,
     val updated_at: String?,
@@ -20,17 +22,18 @@ data class User(
     val total_likes: Int?,
     val total_photos: Int?,
     val total_collections: Int?,
-    val followed_by_user: Boolean?,
-    val followers_count: Int?,
-    val following_count: Int?,
-    val downloads: Int?,
+    val followed_by_user: Boolean? = null,
+    val followers_count: Int? = null,
+    val following_count: Int? = null,
+    val downloads: Int? = null,
     val profile_image: ProfileImage?,
-    val badge: Badge?,
+    val badge: Badge? = null,
     val links: Links?,
-    val photos: List<Photo>?
+    val photos: List<Photo>? = null
 ) : Parcelable
 
 @Parcelize
+@Serializable
 data class ProfileImage(
     val small: String,
     val medium: String,
@@ -38,6 +41,7 @@ data class ProfileImage(
 ) : Parcelable
 
 @Parcelize
+@Serializable
 data class Badge(
     val title: String?,
     val primary: Boolean?,
@@ -46,6 +50,7 @@ data class Badge(
 ) : Parcelable
 
 @Parcelize
+@Serializable
 data class Links(
     val self: String,
     val html: String,

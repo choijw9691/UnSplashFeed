@@ -1,6 +1,7 @@
 package com.gemvaxlink.unsplashfeed.repository
 
 
+import android.util.Log
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import androidx.paging.PagingData
@@ -19,8 +20,7 @@ class PhotoRepository @Inject constructor(
     private val searchService: SearchService,
     private val userService: UserService,
 ) {
-     fun getPhotos(): Flow<PagingData<Photo>> {
-
+      fun getPhotos(): Flow<PagingData<Photo>> {
          return Pager(
              config = PagingConfig(pageSize = 20, enablePlaceholders = false),
              pagingSourceFactory = { PhotoDataSource(photoService) }

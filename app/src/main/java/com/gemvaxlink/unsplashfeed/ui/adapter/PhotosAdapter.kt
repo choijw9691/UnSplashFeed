@@ -1,38 +1,57 @@
 package com.gemvaxlink.unsplashfeed.ui.adapter
 
+import android.util.Log
+import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.gemvaxlink.unsplashfeed.data.photo.model.Photo
+import com.gemvaxlink.unsplashfeed.databinding.ItemPhotoBinding
 import com.gemvaxlink.unsplashfeed.ui.base.BasePagedListAdapter
+import com.gemvaxlink.unsplashfeed.ui.holder.PhotoViewHolder
+import com.gemvaxlink.unsplashfeed.util.Constants
 
-class PhotosAdapter : BasePagedListAdapter<Photo, RecyclerView.ViewHolder>(PHOTO_COMPARATOR) {
+class PhotosAdapter(var listType: Constants.ListType) : BasePagedListAdapter<Photo, RecyclerView.ViewHolder>(PHOTO_COMPARATOR) {
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        TODO("Not yet implemented")
+        Log.d("PhotosAdapter", "Photo at position ")
+
+        when(listType){
+            Constants.ListType.PHOTO->{
+                getItem(position)?.let { (holder as PhotoViewHolder).bind(it)
+
+                }
+            }
+            else->{
+                throw IllegalArgumentException("Invalid view type")
+            }
+        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
-        // 레이아웃 인플레이팅과 ViewHolder 생성 로직 구현
-    }
+        Log.d("PhotosAdapter", "Photo at position1 ")
 
-    override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
-        val photo = getItem(position)
-        // 데이터 바인딩 로직 구현
-    }
-
-    class PhotoViewHolder(/* 뷰 홀더 인자 */) : RecyclerView.ViewHolder(/* 뷰 홀더 레이아웃 */) {
-        // 뷰 바인딩 로직 구현
+        when(listType){
+            Constants.ListType.PHOTO->{
+                val binding =
+                    ItemPhotoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+               return PhotoViewHolder(binding)
+            }else->{
+            throw IllegalArgumentException("Invalid view type")
+            }
+        }
     }
 
     companion object {
         private val PHOTO_COMPARATOR = object : DiffUtil.ItemCallback<Photo>() {
             override fun areItemsTheSame(oldItem: Photo, newItem: Photo): Boolean {
-                // 아이템 동일성 비교 로직 구현
+
+                return oldItem.id == newItem.id
             }
 
             override fun areContentsTheSame(oldItem: Photo, newItem: Photo): Boolean {
-                // 아이템 내용 비교 로직 구현
+                return oldItem == newItem
             }
         }
     }
