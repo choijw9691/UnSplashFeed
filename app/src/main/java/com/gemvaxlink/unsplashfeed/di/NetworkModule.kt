@@ -37,21 +37,27 @@ object NetworkModule {
         .baseUrl("https://api.unsplash.com/")
         .client(okHttpClient)
         .addConverterFactory(
-            Json { isLenient = true // Json 큰따옴표 느슨하게 체크.
+            Json {
+                isLenient = true // Json 큰따옴표 느슨하게 체크.
                 ignoreUnknownKeys = true // Field 값이 없는 경우 무시
                 coerceInputValues = true // "null" 이 들어간경우 default
-            }.asConverterFactory(contentType = "application/json".toMediaType()))
+            }.asConverterFactory(contentType = "application/json".toMediaType())
+        )
         .build()
 
     @Provides
-    fun providePhotoService(retrofit: Retrofit): PhotoService = retrofit.create(PhotoService::class.java)
+    fun providePhotoService(retrofit: Retrofit): PhotoService =
+        retrofit.create(PhotoService::class.java)
 
     @Provides
-    fun provideCollectionService(retrofit: Retrofit): CollectionService = retrofit.create(CollectionService::class.java)
+    fun provideCollectionService(retrofit: Retrofit): CollectionService =
+        retrofit.create(CollectionService::class.java)
 
     @Provides
-    fun provideSearchService(retrofit: Retrofit): SearchService = retrofit.create(SearchService::class.java)
+    fun provideSearchService(retrofit: Retrofit): SearchService =
+        retrofit.create(SearchService::class.java)
 
     @Provides
-    fun provideUserService(retrofit: Retrofit): UserService = retrofit.create(UserService::class.java)
+    fun provideUserService(retrofit: Retrofit): UserService =
+        retrofit.create(UserService::class.java)
 }

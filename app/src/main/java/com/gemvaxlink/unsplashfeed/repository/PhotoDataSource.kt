@@ -17,7 +17,7 @@ class PhotoDataSource (
 
             val currentPage = params.key ?: 1
             val response = photoService.getPhotos(page = currentPage, per_page = 20,order_by = Order.LATEST.value)
-            Log.d("JIWOUNG","enfwklwemS: "+response[0].toString())
+            Log.d("JIWOUNG","errorcheck: "+response.size)
 
             val nextPage = if (response.isEmpty()) null else currentPage + 1
             return LoadResult.Page(
@@ -26,11 +26,9 @@ class PhotoDataSource (
                 nextKey = nextPage
             )
         } catch (e: Exception) {
-            Log.d("JIWOUNG","enfwklwemS: "+e.message)
+            Log.d("JIWOUNG","errorcheck: "+e.message)
             return LoadResult.Error(e)
         }
-
-
     }
 
     override fun getRefreshKey(state: PagingState<Int, Photo>): Int? {
