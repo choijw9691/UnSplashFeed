@@ -6,4 +6,9 @@ object Constants {
         COLLECTION,
         USER
     }
+
+    enum class ClickType{
+        PROFILE,
+        PHOTO
+    }
 }

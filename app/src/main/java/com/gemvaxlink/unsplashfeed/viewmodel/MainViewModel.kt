@@ -21,6 +21,13 @@ class MainViewModel @Inject constructor(
     /*    private val collectionRepository: CollectionRepository*/
 ) : ViewModel() {
 
-     val mainPhotoList: Flow<PagingData<Photo>> = photoRepository.getPhotos().cachedIn(viewModelScope)
+    val mainPhotoList: Flow<PagingData<Photo>> =
+        photoRepository.getPhotos().cachedIn(viewModelScope)
+    var photoId = ""
+    private val _photo = MutableStateFlow<Photo?>(null)
+    val photo: StateFlow<Photo?> = _photo
+   suspend fun getPhoto(id : String){
+       _photo.emit(photoRepository.getPhoto(id))
+    }
 
 }

@@ -17,12 +17,21 @@ data class Photo(
     val height: Int?,
     val color: String? = "#E0E0E0",
     val blur_hash: String?,
+    val views: Int? = 0,
+    val downloads: Int?= 0,
     val likes: Int?,
     var liked_by_user: Boolean?,
     val description: String?,
+    val alt_description: String? ="",
+    val exif: Exif? = null,
+    val location: Location? = null,
+    val tags: List<Tag>? = null,
+    val current_user_collections: List<Collection>? = null,
+    val sponsorship: Sponsorship? = null,
     val urls: Urls,
     val links: Links?,
     val user: User?,
+    val statistics: PhotoStatistics? =null
 ) : Parcelable
 
 @Parcelize

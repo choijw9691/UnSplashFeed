@@ -1,6 +1,55 @@
 <resources>
     <string name="app_name">UnSplashFeed</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <!-- Order -->
     <string name="order_latest">Latest</string>
     <string name="order_oldest">Oldest</string>
     <string name="order_popular">Popular</string>
+    <!-- Photo Detail -->
+    <string name="location_template" translatable="false">%s, %s</string>
+    <string name="views">Views</string>
+    <string name="downloads">Downloads</string>
+    <string name="likes">Likes</string>
+    <string name="camera">Camera</string>
+    <string name="aperture">Aperture</string>
+    <string name="focal_length">Focal Length</string>
+    <string name="dimensions">Dimensions</string>
+    <string name="shutter_speed">Shutter Speed</string>
+    <string name="iso" translatable="false">ISO</string>
+    <string name="description">Description</string>
+
+    <!-- Common -->
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="search">Search</string>
+    <string name="photos">Photos</string>
+    <string name="collections">Collections</string>
+    <string name="like">Like</string>
+    <string name="users">Users</string>
+    <string name="unknown">Unknown</string>
+    <string name="download">Download</string>
+    <string name="on">On</string>
+    <string name="off">Off</string>
+    <string name="share">Share</string>
+    <string name="open_in_browser">Open in browser</string>
+    <string name="apply">Apply</string>
+    <string name="create">Create</string>
+    <string name="save">Save</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="are_you_sure">Are you sure?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="thanks">Thanks!</string>
+    <string name="download_started">Download started</string>
+    <string name="download_complete">Download complete</string>
+    <string name="set_as_wallpaper">Set as wallpaper</string>
+    <string name="setting_wallpaper">Setting wallpaper…</string>
+    <string name="file_exists_title">Download again?</string>
+    <string name="file_exists_message">This photo has already been downloaded. Do you want to download this photo again?</string>
+    <string name="sponsored">Sponsored</string>
+
+
 </resources>

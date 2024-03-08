@@ -20,10 +20,14 @@ class PhotoRepository @Inject constructor(
     private val searchService: SearchService,
     private val userService: UserService,
 ) {
-      fun getPhotos(): Flow<PagingData<Photo>> {
-         return Pager(
-             config = PagingConfig(pageSize = 20, enablePlaceholders = false),
-             pagingSourceFactory = { PhotoDataSource(photoService) }
-         ).flow
+    fun getPhotos(): Flow<PagingData<Photo>> {
+        return Pager(
+            config = PagingConfig(pageSize = 20, enablePlaceholders = false),
+            pagingSourceFactory = { PhotoDataSource(photoService) }
+        ).flow
+    }
+
+    suspend fun getPhoto(id: String): Photo {
+        return photoService.getPhoto(id)
     }
 }

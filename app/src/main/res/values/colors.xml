@@ -7,4 +7,55 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="magenta_10">#FEFBFD</color>
+    <color name="magenta_50">#FDEDF6</color>
+    <color name="magenta_100">#FBDAED</color>
+    <color name="magenta_200">#F8BFE0</color>
+    <color name="magenta_300">#EE96C9</color>
+    <color name="magenta_400">#E667B1</color>
+    <color name="magenta_500">#E30084</color>
+    <color name="magenta_500_80">#80E30084</color>
+    <color name="magenta_600">#B20068</color>
+    <color name="magenta_700">#8A0050</color>
+
+    <!-- blue gray -->
+    <color name="magenta_800">#66003C</color>
+    <color name="magenta_900">#47002A</color>
+    <color name="blue_gray_10">#FCFAFF</color>
+    <color name="blue_gray_50">#F9FAFB</color>
+    <color name="blue_gray_100">#F3F5F6</color>
+    <color name="blue_gray_200">#E7EBEE</color>
+    <color name="blue_gray_300">#DCE0E5</color>
+    <color name="blue_gray_400">#A8B3BD</color>
+    <color name="blue_gray_500">#7F8A94</color>
+    <color name="blue_gray_600">#66707A</color>
+    <color name="blue_gray_700">#525960</color>
+
+    <!-- group -->
+    <color name="blue_gray_800">#3B4044</color>
+    <color name="blue_gray_900">#181A1B</color>   <!-- magenta_500 동일-->
+    <color name="red_500">#E22A21</color>
+    <color name="magenta">#E30084</color>
+    <color name="orange_500">#F86800</color>
+    <color name="yellow">#FFA600</color>
+    <color name="lime">#89BC2A</color>
+    <color name="green_500">#00AA02</color>
+    <color name="light_blue_500">#0A95FF</color>
+    <color name="blue_500">#0146D0</color>
+
+    <color name="scroll_def">#DCE0E5</color>
+
+    <color name="scroll_focus">#A8B3BD</color>
+
+    <color name="green">#00CC02</color>
+    <color name="black_dim_70">#70000000</color>
+
+    <!-- button state layer -->
+    <color name="button_disabled_state_layer">#60FFFFFF</color>
+    <color name="button_pressed_state_layer">#12000000</color>
+    <color name="light_blue_50">#FFE1F5FE</color>
+    <color name="light_blue_200">#FF81D4FA</color>
+    <color name="light_blue_600">#FF039BE5</color>
+    <color name="light_blue_900">#FF01579B</color>
 </resources>
