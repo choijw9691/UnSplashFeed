@@ -6,7 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.gemvaxlink.unsplashfeed.databinding.FragmentHomeBinding
 import com.gemvaxlink.unsplashfeed.ui.activity.MainActivity
 import com.gemvaxlink.unsplashfeed.ui.adapter.PhotosAdapter
+import com.gemvaxlink.unsplashfeed.ui.adapter.ViewPagerAdapter
 import com.gemvaxlink.unsplashfeed.util.Constants
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.collectLatest
@@ -17,33 +19,19 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(FragmentHomeBinding::infl
 
     override fun initialize(binding: FragmentHomeBinding) {
         super.initialize(binding)
-        var photosAdapter = PhotosAdapter(Constants.ListType.PHOTO) {
-            type,id ->
-            lifecycleScope.launch {
-                // 아이템을 클릭했을때
-                viewModel.getPhoto(id)
-                when (type) {
-                    Constants.ClickType.PROFILE -> {
+        binding.vpMain.adapter = ViewPagerAdapter(this)
 
-                    }
-
-                    Constants.ClickType.PHOTO -> {
-                        (requireActivity() as MainActivity).replaceFragment(PhotoDetailFragment())
-                    }
-                }
+        // 탭 레이아웃과 뷰페이저 연결
+        TabLayoutMediator(binding.tabLayout, binding.vpMain) { tab, position ->
+            if(position ==1){
+                tab.text = "COLLECTIONS"
+            }else{
+                tab.text = "HOME"
             }
+        }.attach()
 
-        }
-        binding.rvMain.apply {
-            adapter = photosAdapter
-            layoutManager =
-                LinearLayoutManager(requireContext()) // LinearLayoutManager 또는 원하는 레이아웃 매니저 설정
-        }
-
-        lifecycleScope.launch {
-            viewModel.mainPhotoList.collectLatest {
-                photosAdapter.submitData(it)
-            }
-        }
+    binding.searchFloatingButton.setOnClickListener {
+        (requireActivity() as MainActivity).replaceFragment(SearchFragment())
+    }
     }
 }

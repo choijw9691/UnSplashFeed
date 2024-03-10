@@ -6,10 +6,13 @@ import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView.ViewHolder
 import com.gemvaxlink.unsplashfeed.data.photo.model.Photo
 import com.gemvaxlink.unsplashfeed.databinding.ItemPhotoBinding
+import com.gemvaxlink.unsplashfeed.databinding.ItemUserPhotoBinding
 import com.gemvaxlink.unsplashfeed.ui.base.BasePagedListAdapter
 import com.gemvaxlink.unsplashfeed.ui.holder.PhotoViewHolder
+import com.gemvaxlink.unsplashfeed.ui.holder.UserPhotoViewHolder
 import com.gemvaxlink.unsplashfeed.util.Constants
 
 class PhotosAdapter(var listType: Constants.ListType,var onClick : (Constants.ClickType,String)-> Unit) : BasePagedListAdapter<Photo, RecyclerView.ViewHolder>(PHOTO_COMPARATOR) {
@@ -20,6 +23,10 @@ class PhotosAdapter(var listType: Constants.ListType,var onClick : (Constants.Cl
             Constants.ListType.PHOTO->{
                 getItem(position)?.let { (holder as PhotoViewHolder).bind(it) }
             }
+            Constants.ListType.USER_PHOTOS->{
+                getItem(position)?.let { (holder as UserPhotoViewHolder).bind(it) }
+
+            }
             else->{
                 throw IllegalArgumentException("Invalid view type")
             }
@@ -27,7 +34,7 @@ class PhotosAdapter(var listType: Constants.ListType,var onClick : (Constants.Cl
 
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         Log.d("PhotosAdapter", "Photo at position1 ")
 
         when(listType){
@@ -35,7 +42,13 @@ class PhotosAdapter(var listType: Constants.ListType,var onClick : (Constants.Cl
                 val binding =
                     ItemPhotoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
                return PhotoViewHolder(binding,onClick)
-            }else->{
+            }
+            Constants.ListType.USER_PHOTOS->{
+                val binding =
+                    ItemUserPhotoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+                return UserPhotoViewHolder(binding,onClick)
+            }
+            else->{
             throw IllegalArgumentException("Invalid view type")
             }
         }

@@ -8,12 +8,12 @@ import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions
 import com.gemvaxlink.unsplashfeed.data.photo.model.Photo
 import com.gemvaxlink.unsplashfeed.databinding.ItemPhotoBinding
 import com.gemvaxlink.unsplashfeed.util.Constants
+import com.gemvaxlink.unsplashfeed.util.Constants.CROSS_FADE_DURATION
 
 class PhotoViewHolder(
     var binding: ItemPhotoBinding,
     var onClick: (Constants.ClickType,String) -> Unit
 ) : RecyclerView.ViewHolder(binding.root) {
-    val CROSS_FADE_DURATION = 350
 
     fun bind(photo: Photo) {
         var context = binding.ivPhoto.context

@@ -1,6 +1,7 @@
 package com.gemvaxlink.unsplashfeed.ui.fragment
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.gemvaxlink.unsplashfeed.R
 import com.gemvaxlink.unsplashfeed.data.photo.model.Photo
 import com.gemvaxlink.unsplashfeed.databinding.FragmentCollectionBinding
 import com.gemvaxlink.unsplashfeed.databinding.FragmentPhotoDetailBinding
+import com.gemvaxlink.unsplashfeed.ui.activity.MainActivity
 import com.gemvaxlink.unsplashfeed.ui.adapter.ExifAdapter
 import com.gemvaxlink.unsplashfeed.ui.adapter.TagAdapter
 import com.gemvaxlink.unsplashfeed.util.toPrettyString
@@ -26,9 +28,7 @@ class PhotoDetailFragment :
     override fun initialize(binding: FragmentPhotoDetailBinding) {
         super.initialize(binding)
 
-
-
-        lifecycleScope.launch {
+        viewLifecycleOwner.lifecycleScope.launch {
             viewModel.photo.collectLatest {
                 it?.let { it1 -> setPhotoDetailData(it1) }
             }
@@ -42,19 +42,23 @@ class PhotoDetailFragment :
 
             photo.user?.let { user ->
                 userTextView.text = user.name
-                userContainer.setOnClickListener {
+                Glide.with(requireContext()).load(photo.user?.profile_image?.medium).into(binding.userImageView);
 
+                userContainer.setOnClickListener {
+                    viewModel.getUserPhotos(user)
+                    (requireActivity() as MainActivity).replaceFragment(ProfileFragment(user))
                 }
             }
             photo.location?.let { location ->
                 val locationString = when {
                     location.city != null && location.country != null ->
                         getString(R.string.location_template, location.city, location.country)
+
                     location.city != null && location.country == null -> location.city
                     location.city == null && location.country != null -> location.country
                     else -> null
                 }
-                locationTextView.text= locationString
+                locationTextView.text = locationString
             }
             exifRecyclerView.apply {
                 layoutManager = GridLayoutManager(context, 2)

@@ -20,18 +20,6 @@ class CollectionFragment : BaseFragment<FragmentCollectionBinding>(FragmentColle
 
     override fun initialize(binding: FragmentCollectionBinding) {
         super.initialize(binding)
-        var adapter = PhotosAdapter(Constants.ListType.PHOTO){
-ph,fef->
-        }
-        binding.rvMain.apply {
-            adapter = adapter
-            layoutManager = LinearLayoutManager(requireContext()) // LinearLayoutManager 또는 원하는 레이아웃 매니저 설정
-        }
 
-        lifecycleScope.launch {
-            viewModel.mainPhotoList.collectLatest {
-              //  adapter.submitData(it)
-            }
-        }
     }
 }

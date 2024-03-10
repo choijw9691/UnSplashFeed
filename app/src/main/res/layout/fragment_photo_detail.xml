@@ -1,64 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/coordinator_layout"
+    android:id="@+id/frame_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:ignore="UnusedAttribute"
     android:background="@color/white"
-   >
+    android:fitsSystemWindows="true"
+    tools:ignore="UnusedAttribute">
 
     <androidx.core.widget.NestedScrollView
         android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:clipToPadding="false"
         android:fillViewport="true"
-
-        android:fitsSystemWindows="true"
-        android:clipToPadding="false">
+        android:fitsSystemWindows="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraint_layout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/keyline_11"
             android:animateLayoutChanges="true"
+            android:clipToPadding="false"
             android:fitsSystemWindows="true"
-            android:clipToPadding="false">
+            android:paddingBottom="@dimen/keyline_11">
 
             <ImageView
                 android:id="@+id/photo_image_view"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                android:src="@color/black"
-                android:scaleType="centerCrop"
-                android:foreground="?selectableItemBackground"
                 android:fitsSystemWindows="false"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:foreground="?selectableItemBackground"
+                android:scaleType="centerCrop"
+                android:src="@color/black"
                 app:layout_constraintDimensionRatio="4:3"
-  />
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
                 android:id="@+id/location_text_view"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="@dimen/keyline_7"
-                android:textColor="@color/white"
-                android:fontFamily="sans-serif-medium"
-                android:singleLine="true"
-                android:ellipsize="marquee"
                 android:drawablePadding="@dimen/keyline_4"
+                android:ellipsize="marquee"
+                android:fontFamily="sans-serif-medium"
+                android:padding="@dimen/keyline_7"
+                android:singleLine="true"
+                android:textColor="@color/white"
                 android:visibility="gone"
 
+                app:layout_constraintBottom_toBottomOf="@id/photo_image_view"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="@id/photo_image_view"
                 tools:text="Toronto, Canada"
                 tools:visibility="visible" />
 
@@ -68,28 +64,29 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/keyline_7"
                 android:layout_marginTop="@dimen/keyline_7"
+                android:orientation="horizontal"
                 android:paddingStart="@dimen/keyline_0"
                 android:paddingEnd="@dimen/keyline_7"
-                android:orientation="horizontal"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/download_button"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/photo_image_view">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/user_image_view"
                     android:layout_width="@dimen/user_profile_picture_small_size"
                     android:layout_height="@dimen/user_profile_picture_small_size"
                     android:scaleType="centerCrop"
-
                     tools:ignore="ContentDescription" />
 
                 <TextView
                     android:id="@+id/user_text_view"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:fontFamily="@font/pretendard_semi_bold"
+                    android:textColor="@color/blue_gray_800"
                     android:layout_marginStart="@dimen/keyline_6"
                     android:singleLine="true"
-                    android:layout_gravity="center_vertical"
                     tools:text="Brandon Lam" />
             </LinearLayout>
 
@@ -98,10 +95,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/keyline_7"
-                app:layout_constraintTop_toTopOf="@id/user_container"
                 app:layout_constraintBottom_toBottomOf="@id/user_container"
                 app:layout_constraintEnd_toEndOf="parent"
-        />
+                app:layout_constraintTop_toTopOf="@id/user_container" />
 
             <ImageView
                 android:id="@+id/like_button"
@@ -109,21 +105,18 @@
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/keyline_7"
 
-                app:layout_constraintTop_toTopOf="@id/user_container"
                 app:layout_constraintBottom_toBottomOf="@id/user_container"
                 app:layout_constraintEnd_toStartOf="@id/collect_button"
-/>
+                app:layout_constraintTop_toTopOf="@id/user_container" />
 
             <ImageView
                 android:id="@+id/download_button"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="@dimen/keyline_7"
-
-                app:layout_constraintTop_toTopOf="@id/user_container"
                 app:layout_constraintBottom_toBottomOf="@id/user_container"
                 app:layout_constraintEnd_toStartOf="@id/like_button"
- />
+                app:layout_constraintTop_toTopOf="@id/user_container" />
 
             <View
                 android:id="@+id/divider_1"
@@ -131,8 +124,8 @@
                 android:layout_height="1dp"
                 android:layout_margin="@dimen/keyline_7"
                 android:background="?android:attr/listDivider"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/user_container" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -143,8 +136,7 @@
                 android:overScrollMode="never"
                 app:layout_constraintTop_toBottomOf="@id/divider_1"
                 tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-                tools:spanCount="2"
-         />
+                tools:spanCount="2" />
 
             <View
                 android:id="@+id/divider_2"
@@ -152,8 +144,8 @@
                 android:layout_height="1dp"
                 android:layout_margin="@dimen/keyline_7"
                 android:background="?android:attr/listDivider"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/exif_recycler_view" />
 
             <LinearLayout
@@ -162,27 +154,28 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/keyline_8"
                 android:layout_marginTop="@dimen/keyline_7"
-                android:orientation="vertical"
                 android:background="?attr/selectableItemBackgroundBorderless"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toStartOf="@id/downloads_count_container"
                 app:layout_constraintHorizontal_chainStyle="spread"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/downloads_count_container"
                 app:layout_constraintTop_toBottomOf="@id/divider_2">
 
                 <TextView
                     android:id="@+id/views_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
                     android:fontFamily="sans-serif-medium"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:text="@string/views"
+                    android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/views_count_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
                     android:fontFamily="sans-serif-light"
+                    android:textAlignment="center"
                     tools:text="123" />
             </LinearLayout>
 
@@ -191,27 +184,28 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/keyline_5"
-                android:orientation="vertical"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                app:layout_constraintStart_toEndOf="@id/views_count_container"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@id/views_count_container"
                 app:layout_constraintEnd_toStartOf="@id/likes_count_container"
-                app:layout_constraintTop_toTopOf="@id/views_count_container"
-                app:layout_constraintBottom_toBottomOf="@id/views_count_container">
+                app:layout_constraintStart_toEndOf="@id/views_count_container"
+                app:layout_constraintTop_toTopOf="@id/views_count_container">
 
                 <TextView
                     android:id="@+id/downloads_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
                     android:fontFamily="sans-serif-medium"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:text="@string/downloads"
+                    android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/downloads_count_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
                     android:fontFamily="sans-serif-light"
+                    android:textAlignment="center"
                     tools:text="323.4K" />
             </LinearLayout>
 
@@ -221,27 +215,28 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/keyline_5"
                 android:layout_marginEnd="@dimen/keyline_8"
-                android:orientation="vertical"
                 android:background="?attr/selectableItemBackgroundBorderless"
-                app:layout_constraintStart_toEndOf="@id/downloads_count_container"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toBottomOf="@id/views_count_container"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="@id/views_count_container"
-                app:layout_constraintBottom_toBottomOf="@id/views_count_container">
+                app:layout_constraintStart_toEndOf="@id/downloads_count_container"
+                app:layout_constraintTop_toTopOf="@id/views_count_container">
 
                 <TextView
                     android:id="@+id/likes_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
                     android:fontFamily="sans-serif-medium"
-                    android:singleLine="true" />
+                    android:singleLine="true"
+                    android:text="@string/likes"
+                    android:textAlignment="center" />
 
                 <TextView
                     android:id="@+id/likes_count_text_view"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textAlignment="center"
                     android:fontFamily="sans-serif-light"
+                    android:textAlignment="center"
                     tools:text="2" />
             </LinearLayout>
 
@@ -251,8 +246,8 @@
                 android:layout_height="1dp"
                 android:layout_margin="@dimen/keyline_7"
                 android:background="?android:attr/listDivider"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/views_count_container" />
 
             <androidx.recyclerview.widget.RecyclerView
@@ -262,11 +257,9 @@
                 android:paddingBottom="@dimen/keyline_3"
                 app:layout_constraintTop_toBottomOf="@id/divider_3"
                 tools:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                tools:orientation="horizontal"
-            />
+                tools:orientation="horizontal" />
 
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
-
+</FrameLayout>
